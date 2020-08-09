@@ -36,9 +36,18 @@ impl Hittable for Triangle {
 	    }
 	    let t = f * dot(&plane_vector.1, &q);
 	    if t > 1e-6 {
-	        record.t = t;
-	        return true;
-	    }
+		    match record.t {
+		    	Some(val) if val > t => {
+		    		record.t = Some(t); 
+			        return true;
+		    	}, None => {
+		    		record.t = Some(t); 
+			        return true;
+		    	}, Some(_) => {
+
+		    	}
+		    }
+		}
 	    false
 	}
 }

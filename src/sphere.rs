@@ -24,11 +24,19 @@ impl Hittable for Sphere {
 	    if determinant > 0.0 {
 	        let t = [(-b - sqrtf(determinant)) / 2.0 / a, (-b + sqrtf(determinant)) / 2.0 / a];
 	        for &i in t.iter() {
-                if record.t < 0.0 || record.t > i {
-                    record.t = i;
-                    record.normal = &ray.point_at(i) - &self.origin;
-                    return true;
-                }
+	        	match record.t {
+	        		Some(val) if val > i => {
+                    	record.t = Some(i);
+                    	record.normal = &ray.point_at(i) - &self.origin;
+                    	return true;
+                	}, None => {
+                    	record.t = Some(i);
+                    	record.normal = &ray.point_at(i) - &self.origin;
+                    	return true;
+                	}, Some(_) => {
+
+	        		}
+	        	}
 	        }
 	    }
 	    false

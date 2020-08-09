@@ -16,7 +16,7 @@ pub struct Camera {
 }
 
 impl Camera {
-	pub fn new(size: (u32, u32), eye_coord: Position, left_lower: Position, left_upper: Position, right_lower: Position, right_upper: Position) -> Camera{
+	pub fn new(size: (u32, u32), eye_coord: Position, left_lower: Position, left_upper: Position, right_lower: Position, right_upper: Position) -> Camera {
 		let pixel: RgbImage = ImageBuffer::new(size.0, size.1);
 		Camera {
 			size,
@@ -29,6 +29,7 @@ impl Camera {
 		}
 	}
 
+	/// Convert stored camera to image file
 	pub fn to_ppm(&self, filename: &str) {
 		self.pixel.save(filename).unwrap();
 	}

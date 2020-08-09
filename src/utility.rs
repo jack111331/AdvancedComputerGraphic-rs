@@ -7,8 +7,7 @@ pub struct Position(pub f32, pub f32, pub f32);
 pub struct Velocity(pub f32, pub f32, pub f32);
 
 pub struct HitRecord {
-	// FIXME change t to option f32
-	pub t: f32,
+	pub t: Option<f32>,
 	pub normal: Velocity
 }
 
@@ -25,7 +24,7 @@ impl Velocity {
 }
 
 impl HitRecord {
-	pub fn new(t: f32, normal: Velocity) -> Self {
+	pub fn new(t: Option<f32>, normal: Velocity) -> Self {
 		HitRecord {
 			t,
 			normal

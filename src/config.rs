@@ -71,7 +71,7 @@ pub fn create_scene(filename: &str) -> Scene {
 	);
 
 	let scene: Scene = Scene {
-		camera: camera,
+		camera: Some(camera),
 		hittable_list
 	};
 

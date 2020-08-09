@@ -28,7 +28,10 @@ fn test_PointAt() {
 	let result = ray.point_at(t);
 
 	// then
-	assert_eq!(result, Position::new((3.6, 3.05, 2.89)));
+	let answer = Position::new((3.6, 2.9299998, 2.8899999));
+	assert_eq!(result.0, answer.0);
+	assert_eq!(result.1, answer.1);
+	assert_eq!(result.2, answer.2);
 }
 
 impl Ray {
